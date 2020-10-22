@@ -105,6 +105,7 @@ const dailyChart = new Chart(dailyctx, {
       "19-10",
       "20-10",
       "21-10",
+      "22-10",
     ],
 
     datasets: [
@@ -112,7 +113,7 @@ const dailyChart = new Chart(dailyctx, {
         label: "New Total School Related Cases",
         backgroundColor: ["rgba(222,91,192, 0.2)"],
         borderColor: ["rgba(222,91,192, 1)"],
-        data: [36, 56, 74, 111, 100, 56, 72, 96, 109, 98, 74, 121, 144, 74],
+        data: [64, 36, 56, 74, 111, 100, 56, 72, 96, 109, 98, 74, 121, 144, 74],
         fill: false,
       },
       {
