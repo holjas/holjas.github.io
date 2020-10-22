@@ -1,6 +1,5 @@
-const ctx = document.getElementById("myChart").getContext("2d");
-
-const myChart = new Chart(ctx, {
+const totalctx = document.getElementById("totalChart").getContext("2d");
+const totalChart = new Chart(totalctx, {
   type: "line",
   data: {
     labels: [
@@ -63,6 +62,64 @@ const myChart = new Chart(ctx, {
           133,
           135,
         ],
+        fill: false,
+      },
+      //   {
+      //     label: "Ontario Daily Cases (School days only)",
+      //     backgroundColor: ["rgba(192,192,192, 0.2)"],
+      //     borderColor: ["rgba(192,192,192, 1)"],
+      //     data: [538, 732, 615, 548, 583, 797, 939, 746, 721, 783, 712, 704, 821],
+      //     fill: false,
+      //   },
+    ],
+  },
+  options: {
+    scales: {
+      yAxes: [
+        {
+          ticks: {
+            beginAtZero: true,
+          },
+        },
+      ],
+    },
+  },
+});
+// daily new case counts
+const dailyctx = document.getElementById("dailyChart").getContext("2d");
+const dailyChart = new Chart(dailyctx, {
+  type: "line",
+  data: {
+    labels: [
+      "01-10",
+      "02-10",
+      "05-10",
+      "06-10",
+      "07-10",
+      "08-10",
+      "09-10",
+      "13-10",
+      "14-10",
+      "15-10",
+      "16-10",
+      "19-10",
+      "20-10",
+      "21-10",
+    ],
+
+    datasets: [
+      {
+        label: "New Total School Related Cases",
+        backgroundColor: ["rgba(222,91,192, 0.2)"],
+        borderColor: ["rgba(222,91,192, 1)"],
+        data: [36, 56, 74, 111, 100, 56, 72, 96, 109, 98, 74, 121, 144, 74],
+        fill: false,
+      },
+      {
+        label: "New Total Child Care Related Cases",
+        backgroundColor: ["rgba(192,222,91,0.2)"],
+        borderColor: ["rgba(192,222,91, 1)"],
+        data: [8, 12, 14, 17, 23, 6, 20, 10, 15, 20, 11, 10, 21, 19, 7],
         fill: false,
       },
       //   {
