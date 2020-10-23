@@ -1,3 +1,4 @@
+// current # of locations with cases
 const totalctx = document.getElementById("totalChart").getContext("2d");
 const totalChart = new Chart(totalctx, {
   type: "line",
@@ -17,6 +18,7 @@ const totalChart = new Chart(totalctx, {
       "19-10",
       "20-10",
       "21-10",
+      "22-10",
     ],
 
     datasets: [
@@ -39,6 +41,7 @@ const totalChart = new Chart(totalctx, {
           508,
           516,
           501,
+          514,
         ],
         fill: false,
       },
@@ -61,6 +64,7 @@ const totalChart = new Chart(totalctx, {
           128,
           133,
           135,
+          133,
         ],
         fill: false,
       },
@@ -106,6 +110,7 @@ const dailyChart = new Chart(dailyctx, {
       "20-10",
       "21-10",
       "22-10",
+      "23-10",
     ],
 
     datasets: [
@@ -113,14 +118,31 @@ const dailyChart = new Chart(dailyctx, {
         label: "New Total School Related Cases",
         backgroundColor: ["rgba(222,91,192, 0.2)"],
         borderColor: ["rgba(222,91,192, 1)"],
-        data: [64, 36, 56, 74, 111, 100, 56, 72, 96, 109, 98, 74, 121, 144, 74],
+        data: [
+          64,
+          36,
+          56,
+          74,
+          111,
+          100,
+          56,
+          72,
+          96,
+          109,
+          98,
+          74,
+          121,
+          144,
+          74,
+          72,
+        ],
         fill: false,
       },
       {
         label: "New Total Child Care Related Cases",
         backgroundColor: ["rgba(192,222,91,0.2)"],
         borderColor: ["rgba(192,222,91, 1)"],
-        data: [8, 12, 14, 17, 23, 6, 20, 10, 15, 20, 11, 10, 21, 19, 7],
+        data: [8, 12, 14, 17, 23, 6, 20, 10, 15, 20, 11, 10, 21, 19, 7, 8],
         fill: false,
       },
       //   {
