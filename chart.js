@@ -19,6 +19,9 @@ const totalChart = new Chart(totalctx, {
       "20-10",
       "21-10",
       "22-10",
+      "23-10",
+      "26-10"
+    
     ],
 
     datasets: [
@@ -42,6 +45,7 @@ const totalChart = new Chart(totalctx, {
           516,
           501,
           514,
+          548
         ],
         fill: false,
       },
@@ -50,6 +54,7 @@ const totalChart = new Chart(totalctx, {
         backgroundColor: ["rgba(240, 173, 78, 0.2)"],
         borderColor: ["rgba(240, 173, 78, 1)"],
         data: [
+          59,
           68,
           76,
           88,
@@ -65,6 +70,7 @@ const totalChart = new Chart(totalctx, {
           133,
           135,
           133,
+          131
         ],
         fill: false,
       },
@@ -111,6 +117,7 @@ const dailyChart = new Chart(dailyctx, {
       "21-10",
       "22-10",
       "23-10",
+      "26-10"
     ],
 
     datasets: [
@@ -135,6 +142,7 @@ const dailyChart = new Chart(dailyctx, {
           144,
           74,
           72,
+          72,
         ],
         fill: false,
       },
@@ -142,7 +150,7 @@ const dailyChart = new Chart(dailyctx, {
         label: "New Total Child Care Related Cases",
         backgroundColor: ["rgba(192,222,91,0.2)"],
         borderColor: ["rgba(192,222,91, 1)"],
-        data: [8, 12, 14, 17, 23, 6, 20, 10, 15, 20, 11, 10, 21, 19, 7, 8],
+        data: [8, 12, 14, 17, 23, 6, 20, 10, 15, 20, 11, 10, 21, 19, 7, 8,9]
         fill: false,
       },
       //   {
