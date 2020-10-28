@@ -22,6 +22,7 @@ const totalChart = new Chart(totalctx, {
       "23-10",
       "26-10",
       "27-10",
+      "28-10",
     ],
 
     datasets: [
@@ -48,6 +49,7 @@ const totalChart = new Chart(totalctx, {
           514,
           548,
           593,
+          595,
         ],
         fill: false,
       },
@@ -74,6 +76,7 @@ const totalChart = new Chart(totalctx, {
           133,
           131,
           137,
+          139,
         ],
         fill: false,
       },
@@ -122,6 +125,7 @@ const dailyChart = new Chart(dailyctx, {
       "23-10",
       "26-10",
       "27-10",
+      "28-10",
     ],
 
     datasets: [
@@ -130,7 +134,6 @@ const dailyChart = new Chart(dailyctx, {
         backgroundColor: ["rgba(222,91,192, 0.2)"],
         borderColor: ["rgba(222,91,192, 1)"],
         data: [
-          64,
           36,
           56,
           74,
@@ -148,6 +151,7 @@ const dailyChart = new Chart(dailyctx, {
           72,
           72,
           144,
+          92,
         ],
         fill: false,
       },
@@ -174,6 +178,7 @@ const dailyChart = new Chart(dailyctx, {
           8,
           9,
           26,
+          9,
         ],
         fill: false,
       },
@@ -198,3 +203,26 @@ const dailyChart = new Chart(dailyctx, {
     },
   },
 });
+// 7 day rolling average
+function dateArray() {
+  return totalChart.data.labels.reverse();
+}
+
+function chunkArray(myArray) {
+  let index = 0;
+  let arrayLength = myArray.length;
+  let tempArray = [];
+  let chunk_size = 7;
+
+  for (index = 0; index < arrayLength; index += chunk_size) {
+    myChunk = myArray.slice(index, index + chunk_size);
+    tempArray.push(myChunk);
+  }
+  return tempArray;
+}
+
+console.log(chunkArray([1, 2, 3]));
+console.log(chunkArray(dateArray()));
+
+function calculateSevenAverage() {}
+console.log(calculateSevenAverage());
