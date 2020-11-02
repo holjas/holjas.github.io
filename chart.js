@@ -146,6 +146,7 @@ const dailyChart = new Chart(dailyctx, {
         backgroundColor: ["rgba(222,91,192, 0.2)"],
         borderColor: ["rgba(222,91,192, 1)"],
         data: [
+          64,
           36,
           56,
           74,
