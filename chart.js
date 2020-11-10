@@ -31,6 +31,7 @@ const totalChart = new Chart(totalctx, {
       "05-11",
       "06-11",
       "09-11",
+      "10-11",
     ],
 
     datasets: [
@@ -66,6 +67,7 @@ const totalChart = new Chart(totalctx, {
           580,
           582,
           565,
+          601,
         ],
         fill: false,
       },
@@ -100,6 +102,7 @@ const totalChart = new Chart(totalctx, {
           115,
           118,
           118,
+          120,
           120,
         ],
         fill: false,
@@ -158,6 +161,7 @@ const dailyChart = new Chart(dailyctx, {
       "05-11",
       "06-11",
       "09-11",
+      "10-11",
     ],
 
     datasets: [
@@ -193,6 +197,7 @@ const dailyChart = new Chart(dailyctx, {
           68,
           85,
           79,
+          159,
         ],
         fill: false,
       },
@@ -228,6 +233,7 @@ const dailyChart = new Chart(dailyctx, {
           20,
           8,
           10,
+          22,
         ],
         fill: false,
       },
