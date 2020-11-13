@@ -96,12 +96,21 @@ function newCasesChart(labels, schoolCases, lccCases) {
 
       datasets: [
         {
+          label: "Elementary & Secondary Schools 7 Day Average",
+          backgroundColor: ["rgba(89,35,76 1)"],
+          borderColor: ["rgba(89,35,76, 1"],
+          borderDash: [7, 5],
+          data: simpleMovingAVG(schoolCases, 7),
+          fill: false,
+        },
+        {
           label: "Elementary & Secondary Schools",
           backgroundColor: ["rgba(222,91,192, 0.2)"],
           borderColor: ["rgba(222,91,192, 1)"],
           data: schoolCases,
           fill: false,
         },
+
         {
           label: "Licensed Child Care Settings",
           backgroundColor: ["rgba(192,222,91,0.2)"],
@@ -180,7 +189,7 @@ function newLCCRelatedCases(array) {
 }
 
 // Function to calculate n-Day Simple moving average
-function simpleMovingAVG(dataObjArray, timePeriods) {
+function simpleMovingAVG([...dataObjArray], timePeriods) {
   const masterLength = dataObjArray.length;
   let arrayLength = dataObjArray.length;
   let sum = 0;
