@@ -57,6 +57,14 @@ function numberOfLocationChart(labels, schools, lcc) {
           fill: false,
         },
         {
+          label: "Elementary & Secondary Schools 7 Day Average",
+          backgroundColor: ["rgba(91, 192, 222, 1)"],
+          borderColor: ["rgba(91, 192, 222, 0.2)"],
+          borderDash: [7, 5],
+          data: simpleMovingAVG(schools, 7),
+          fill: false,
+        },
+        {
           label: "Licensed Child Care Settings",
           backgroundColor: ["rgba(240, 173, 78, 0.2)"],
           borderColor: ["rgba(240, 173, 78, 1)"],
@@ -98,6 +106,14 @@ function newCasesChart(labels, schoolCases, lccCases) {
           backgroundColor: ["rgba(222,91,192, 0.2)"],
           borderColor: ["rgba(222,91,192, 1)"],
           data: schoolCases,
+          fill: false,
+        },
+        {
+          label: "Elementary & Secondary Schools 7 Day Average",
+          backgroundColor: ["rgba(222,91,192, 1)"],
+          borderColor: ["rgba(222,91,192, 0.2)"],
+          borderDash: [7, 5],
+          data: simpleMovingAVG(schoolCases, 7),
           fill: false,
         },
         {
@@ -177,19 +193,28 @@ function newLCCRelatedCases(array) {
   return results;
 }
 
-// seven day averages
-function sevenDayAverage() {
-  let num = newSchoolRelatedCases().reverse();
-  let chunked = [];
-  let results = [];
-  // arrange the daily case numbers into 7 day block arrays
-  while (num.length) {
-    chunked.push(num.splice(0, 7));
-  }
+// Function to calculate n-Day Simple moving average
+function simpleMovingAVG(dataObjArray, timePeriods) {
+  const masterLength = dataObjArray.length;
+  let arrayLength = dataObjArray.length;
+  let sum = 0;
+  let result = false;
+  let final = [];
 
-  // calcaulte the average of each block
-  for (let i = 0; i < chunked.length; i++) {
-    console.log(chunked[i][0]);
+  dataObjArray.reverse();
+  while (arrayLength >= timePeriods) {
+    for (var i = 0; i < timePeriods; i++) {
+      sum += dataObjArray[i];
+    }
+    result = parseFloat(sum) / parseFloat(timePeriods);
+
+    sum = 0;
+    final.push(result.toFixed());
+    arrayLength--;
+    dataObjArray.shift();
   }
+  while (final.length <= masterLength - 1) {
+    final.push("-");
+  }
+  return final.reverse();
 }
-// console.log(sevenDayAverage());
