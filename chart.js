@@ -27,6 +27,7 @@ schoolSummaryData().then((schoolData) => {
     let currentSchoolsWithCasesData = currentSchoolsWithCases(schoolData);
     let newLCCRelatedCasesData = newLCCRelatedCases(LCCdata);
     let currentLCCWithCasesData = currentLCCWithCases(LCCdata);
+    // let simpleMovingAVGData = simpleMovingAVG(newSchoolRelatedCasesData, 7);
     numberOfLocationChart(
       labelsData,
       currentSchoolsWithCasesData,
@@ -36,6 +37,7 @@ schoolSummaryData().then((schoolData) => {
       labelsData,
       newSchoolRelatedCasesData,
       newLCCRelatedCasesData
+      // simpleMovingAVGData
     );
   });
 });
@@ -54,14 +56,6 @@ function numberOfLocationChart(labels, schools, lcc) {
           backgroundColor: ["rgba(91, 192, 222, 0.2)"],
           borderColor: ["rgba(91, 192, 222, 1)"],
           data: schools,
-          fill: false,
-        },
-        {
-          label: "Elementary & Secondary Schools 7 Day Average",
-          backgroundColor: ["rgba(91, 192, 222, 1)"],
-          borderColor: ["rgba(91, 192, 222, 0.2)"],
-          borderDash: [7, 5],
-          data: simpleMovingAVG(schools, 7),
           fill: false,
         },
         {
@@ -106,14 +100,6 @@ function newCasesChart(labels, schoolCases, lccCases) {
           backgroundColor: ["rgba(222,91,192, 0.2)"],
           borderColor: ["rgba(222,91,192, 1)"],
           data: schoolCases,
-          fill: false,
-        },
-        {
-          label: "Elementary & Secondary Schools 7 Day Average",
-          backgroundColor: ["rgba(222,91,192, 1)"],
-          borderColor: ["rgba(222,91,192, 0.2)"],
-          borderDash: [7, 5],
-          data: simpleMovingAVG(schoolCases, 7),
           fill: false,
         },
         {
