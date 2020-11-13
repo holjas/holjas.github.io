@@ -1,295 +1,195 @@
-// current # of locations with cases
-const totalctx = document.getElementById("totalChart").getContext("2d");
-const totalChart = new Chart(totalctx, {
-  type: "line",
-  data: {
-    labels: [
-      "01-10",
-      "02-10",
-      "05-10",
-      "06-10",
-      "07-10",
-      "08-10",
-      "09-10",
-      "13-10",
-      "14-10",
-      "15-10",
-      "16-10",
-      "19-10",
-      "20-10",
-      "21-10",
-      "22-10",
-      "23-10",
-      "26-10",
-      "27-10",
-      "28-10",
-      "29-10",
-      "30-10",
-      "02-11",
-      "03-11",
-      "04-11",
-      "05-11",
-      "06-11",
-      "09-11",
-      "10-11",
-      "11-11",
-      "12-11",
-    ],
+let proxyUrl = "https://cors-anywhere.herokuapp.com/";
+let schoolSummaryDataTargetUrl =
+  "https://data.ontario.ca/api/3/action/datastore_search?resource_id=7fbdbb48-d074-45d9-93cb-f7de58950418&limit=1000";
+let lccSummaryDataTargetUrl =
+  "https://data.ontario.ca/api/3/action/datastore_search?resource_id=74f9ac9f-7ca8-4860-b2c3-189a2c25e30c&limit=1000";
 
-    datasets: [
-      {
-        label: "Current # of Schools with Cases",
-        backgroundColor: ["rgba(91, 192, 222, 0.2)"],
-        borderColor: ["rgba(91, 192, 222, 1)"],
-        data: [
-          306,
-          318,
-          335,
-          347,
-          379,
-          415,
-          429,
-          436,
-          421,
-          451,
-          485,
-          483,
-          508,
-          516,
-          501,
-          514,
-          548,
-          593,
-          595,
-          581,
-          551,
-          558,
-          578,
-          581,
-          580,
-          582,
-          565,
-          601,
-          654,
-          654,
-        ],
-        fill: false,
-      },
-      {
-        label: "Current # of Daycare Centers with Cases",
-        backgroundColor: ["rgba(240, 173, 78, 0.2)"],
-        borderColor: ["rgba(240, 173, 78, 1)"],
-        data: [
-          59,
-          68,
-          76,
-          88,
-          101,
-          101,
-          107,
-          107,
-          119,
-          129,
-          127,
-          122,
-          128,
-          133,
-          135,
-          133,
-          131,
-          137,
-          139,
-          135,
-          131,
-          125,
-          122,
-          115,
-          118,
-          118,
-          120,
-          120,
-          126,
-          118,
-        ],
-        fill: false,
-      },
-      //   {
-      //     label: "Ontario Daily Cases (School days only)",
-      //     backgroundColor: ["rgba(192,192,192, 0.2)"],
-      //     borderColor: ["rgba(192,192,192, 1)"],
-      //     data: [538, 732, 615, 548, 583, 797, 939, 746, 721, 783, 712, 704, 821],
-      //     fill: false,
-      //   },
-    ],
-  },
-  options: {
-    scales: {
-      yAxes: [
+// FETCH School Summary of Cases
+const schoolSummaryData = async () => {
+  // console.log("Processing Schools...");
+  const request = await fetch(proxyUrl + schoolSummaryDataTargetUrl);
+  const data = await request.json();
+  return data;
+};
+const LCCSummaryData = async () => {
+  // console.log("Processing LCC...");
+  const request = await fetch(proxyUrl + lccSummaryDataTargetUrl);
+  const data = await request.json();
+  return data;
+};
+
+schoolSummaryData().then((schoolData) => {
+  LCCSummaryData().then((LCCdata) => {
+    // console.log("Data Returned", LCCdata.result.records);
+    // console.log("Data Returned", data.result.records);
+    let labelsData = collectedDates(schoolData);
+    let newSchoolRelatedCasesData = newSchoolRelatedCases(schoolData);
+    let currentSchoolsWithCasesData = currentSchoolsWithCases(schoolData);
+    let newLCCRelatedCasesData = newLCCRelatedCases(LCCdata);
+    let currentLCCWithCasesData = currentLCCWithCases(LCCdata);
+    numberOfLocationChart(
+      labelsData,
+      currentSchoolsWithCasesData,
+      currentLCCWithCasesData
+    );
+    newCasesChart(
+      labelsData,
+      newSchoolRelatedCasesData,
+      newLCCRelatedCasesData
+    );
+  });
+});
+
+// current # of locations with cases chart
+function numberOfLocationChart(labels, schools, lcc) {
+  const totalctx = document.getElementById("totalChart").getContext("2d");
+  const totalChart = new Chart(totalctx, {
+    type: "line",
+    data: {
+      labels: labels,
+
+      datasets: [
         {
-          ticks: {
-            beginAtZero: true,
-          },
+          label: "Elementary & Secondary Schools",
+          backgroundColor: ["rgba(91, 192, 222, 0.2)"],
+          borderColor: ["rgba(91, 192, 222, 1)"],
+          data: schools,
+          fill: false,
+        },
+        {
+          label: "Licensed Child Care Settings",
+          backgroundColor: ["rgba(240, 173, 78, 0.2)"],
+          borderColor: ["rgba(240, 173, 78, 1)"],
+          data: lcc,
+          fill: false,
         },
       ],
     },
-  },
-});
-// daily new case counts
-const dailyctx = document.getElementById("dailyChart").getContext("2d");
-const dailyChart = new Chart(dailyctx, {
-  type: "line",
-  data: {
-    labels: [
-      "01-10",
-      "02-10",
-      "05-10",
-      "06-10",
-      "07-10",
-      "08-10",
-      "09-10",
-      "13-10",
-      "14-10",
-      "15-10",
-      "16-10",
-      "19-10",
-      "20-10",
-      "21-10",
-      "22-10",
-      "23-10",
-      "26-10",
-      "27-10",
-      "28-10",
-      "29-10",
-      "30-10",
-      "02-11",
-      "03-11",
-      "04-11",
-      "05-11",
-      "06-11",
-      "09-11",
-      "10-11",
-      "11-11",
-      "12-11",
-    ],
-
-    datasets: [
-      {
-        label: "New Total School Related Cases",
-        backgroundColor: ["rgba(222,91,192, 0.2)"],
-        borderColor: ["rgba(222,91,192, 1)"],
-        data: [
-          64,
-          36,
-          56,
-          74,
-          111,
-          100,
-          56,
-          72,
-          96,
-          109,
-          98,
-          74,
-          121,
-          144,
-          74,
-          72,
-          72,
-          144,
-          92,
-          99,
-          61,
-          69,
-          134,
-          116,
-          68,
-          85,
-          79,
-          159,
-          198,
-          103,
-        ],
-        fill: false,
+    options: {
+      title: {
+        display: true,
+        text:
+          "Current Number of Locations with Active Cases (by reporting date)",
       },
-      {
-        label: "New Total Child Care Related Cases",
-        backgroundColor: ["rgba(192,222,91,0.2)"],
-        borderColor: ["rgba(192,222,91, 1)"],
-        data: [
-          8,
-          12,
-          14,
-          17,
-          23,
-          6,
-          20,
-          10,
-          15,
-          20,
-          11,
-          10,
-          21,
-          19,
-          7,
-          8,
-          9,
-          26,
-          9,
-          16,
-          9,
-          6,
-          23,
-          16,
-          20,
-          8,
-          10,
-          22,
-          19,
-          10,
-        ],
-        fill: false,
-      },
-      //   {
-      //     label: "Ontario Daily Cases (School days only)",
-      //     backgroundColor: ["rgba(192,192,192, 0.2)"],
-      //     borderColor: ["rgba(192,192,192, 1)"],
-      //     data: [538, 732, 615, 548, 583, 797, 939, 746, 721, 783, 712, 704, 821],
-      //     fill: false,
-      //   },
-    ],
-  },
-  options: {
-    scales: {
-      yAxes: [
-        {
-          ticks: {
-            beginAtZero: true,
+      scales: {
+        yAxes: [
+          {
+            ticks: {
+              beginAtZero: true,
+            },
           },
-        },
-      ],
+        ],
+      },
     },
-  },
-});
-// 7 day rolling average
-function dateArray() {
-  return totalChart.data.labels.reverse();
+  });
 }
 
-function chunkArray(myArray) {
-  let index = 0;
-  let arrayLength = myArray.length;
-  let tempArray = [];
-  let chunk_size = 7;
+// daily new cases chart
+function newCasesChart(labels, schoolCases, lccCases) {
+  const dailyctx = document.getElementById("dailyChart").getContext("2d");
+  const dailyChart = new Chart(dailyctx, {
+    type: "line",
+    data: {
+      labels: labels,
 
-  for (index = 0; index < arrayLength; index += chunk_size) {
-    myChunk = myArray.slice(index, index + chunk_size);
-    tempArray.push(myChunk);
+      datasets: [
+        {
+          label: "Elementary & Secondary Schools",
+          backgroundColor: ["rgba(222,91,192, 0.2)"],
+          borderColor: ["rgba(222,91,192, 1)"],
+          data: schoolCases,
+          fill: false,
+        },
+        {
+          label: "Licensed Child Care Settings",
+          backgroundColor: ["rgba(192,222,91,0.2)"],
+          borderColor: ["rgba(192,222,91, 1)"],
+          data: lccCases,
+          fill: false,
+        },
+      ],
+    },
+    options: {
+      title: {
+        display: true,
+        text: "New Reported Cases (by reporting date)",
+      },
+      scales: {
+        yAxes: [
+          {
+            ticks: {
+              beginAtZero: true,
+            },
+          },
+        ],
+      },
+    },
+  });
+}
+
+// dates
+function collectedDates(array) {
+  let arrayLength = array.result.records.length;
+  let results = [];
+  for (let i = 0; i < arrayLength; i++) {
+    results.push(array.result.records[i].reported_date.slice(5, 10));
   }
-  return tempArray;
+  return results;
 }
 
-console.log(chunkArray([1, 2, 3]));
-console.log(chunkArray(dateArray()));
+// current # of schools with active cases
+function currentSchoolsWithCases(array) {
+  let arrayLength = array.result.records.length;
+  let results = [];
+  for (let i = 0; i < arrayLength; i++) {
+    results.push(array.result.records[i].current_schools_w_cases);
+  }
+  return results;
+}
 
-function calculateSevenAverage() {}
-console.log(calculateSevenAverage());
+// daily new school cases
+function newSchoolRelatedCases(array) {
+  let arrayLength = array.result.records.length;
+  let results = [];
+  for (let i = 0; i < arrayLength; i++) {
+    results.push(array.result.records[i].new_total_school_related_cases);
+  }
+  return results;
+}
+
+// current # of LCC with active cases
+function currentLCCWithCases(array) {
+  let arrayLength = array.result.records.length;
+  let results = [];
+  for (let i = 0; i < arrayLength; i++) {
+    results.push(array.result.records[i].current_lcc_centres_w_cases);
+  }
+  return results;
+}
+
+//daily new LCC cases
+function newLCCRelatedCases(array) {
+  let arrayLength = array.result.records.length;
+  let results = [];
+  for (let i = 0; i < arrayLength; i++) {
+    results.push(array.result.records[i].new_total_lcc_related_cases);
+  }
+  return results;
+}
+
+// seven day averages
+function sevenDayAverage() {
+  let num = newSchoolRelatedCases().reverse();
+  let chunked = [];
+  let results = [];
+  // arrange the daily case numbers into 7 day block arrays
+  while (num.length) {
+    chunked.push(num.splice(0, 7));
+  }
+
+  // calcaulte the average of each block
+  for (let i = 0; i < chunked.length; i++) {
+    console.log(chunked[i][0]);
+  }
+}
+// console.log(sevenDayAverage());
