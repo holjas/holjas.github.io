@@ -27,7 +27,6 @@ schoolSummaryData().then((schoolData) => {
     let currentSchoolsWithCasesData = currentSchoolsWithCases(schoolData);
     let newLCCRelatedCasesData = newLCCRelatedCases(LCCdata);
     let currentLCCWithCasesData = currentLCCWithCases(LCCdata);
-    // let simpleMovingAVGData = simpleMovingAVG(newSchoolRelatedCasesData, 7);
     numberOfLocationChart(
       labelsData,
       currentSchoolsWithCasesData,
@@ -37,7 +36,6 @@ schoolSummaryData().then((schoolData) => {
       labelsData,
       newSchoolRelatedCasesData,
       newLCCRelatedCasesData
-      // simpleMovingAVGData
     );
   });
 });
