@@ -7,7 +7,9 @@ let lccSummaryDataTargetUrl =
 // FETCH School Summary of Cases
 const schoolSummaryData = async () => {
   // console.log("Processing Schools...");
-  const request = await fetch(proxyUrl + schoolSummaryDataTargetUrl);
+  const request = await fetch(
+    "https://cors-anywhere.herokuapp.com/https://data.ontario.ca/api/3/action/datastore_search?resource_id=7fbdbb48-d074-45d9-93cb-f7de58950418&limit=1000"
+  );
   const data = await request.json();
   return data;
 };
@@ -21,7 +23,7 @@ const LCCSummaryData = async () => {
 schoolSummaryData().then((schoolData) => {
   LCCSummaryData().then((LCCdata) => {
     // console.log("Data Returned", LCCdata.result.records);
-    // console.log("Data Returned", data.result.records);
+    // console.log("Data Returned", schoolData.result.records);
     let labelsData = collectedDates(schoolData);
     let newSchoolRelatedCasesData = newSchoolRelatedCases(schoolData);
     let currentSchoolsWithCasesData = currentSchoolsWithCases(schoolData);
