@@ -1,3 +1,5 @@
+//https://data.ontario.ca/api/3/action/datastore_search?resource_id=74f9ac9f-7ca8-4860-b2c3-189a2c25e30c&limit=5000
+
 export let lccdatasummary = {
   help: "https://data.ontario.ca/api/3/action/help_show?name=datastore_search",
   success: true,
@@ -2118,6 +2120,38 @@ export let lccdatasummary = {
         cumulative_lcc_centres_closed: 164,
         cumulative_lcc_homes_closed: 482,
       },
+      {
+        _id: 66,
+        collected_date: "2020-12-11T00:00:00",
+        reported_date: "2020-12-14T00:00:00",
+        current_lcc_centres_w_cases: 208,
+        current_lcc_centres_closed: 39,
+        current_total_number_lcc_centres: 5246,
+        new_total_lcc_related_cases: 25,
+        new_lcc_related_child_cases: 14,
+        new_lcc_related_staff_cases: 11,
+        new_lcc_related_unspecified_cases: 0,
+        new_lcc_centres_closed: 2,
+        new_lcc_homes_closed: 1,
+        recent_lcc_related_cases: 314,
+        recent_lcc_related_child_cases: 162,
+        recent_lcc_related_staff_cases: 152,
+        recent_lcc_related_unspecified_cases: 0,
+        recent_lcc_centres_closed: 39,
+        recent_lcc_homes_closed: 28,
+        past_lcc_related_cases: 755,
+        past_lcc_related_child_cases: 418,
+        past_lcc_related_staff_cases: 337,
+        past_lcc_related_unspecified_cases: 0,
+        past_lcc_centres_closed: 127,
+        past_lcc_homes_closed: 455,
+        cumulative_lcc_related_cases: 1069,
+        cumulative_lcc_related_child_cases: 580,
+        cumulative_lcc_related_staff_cases: 489,
+        cumulative_lcc_related_unspecified_cases: 0,
+        cumulative_lcc_centres_closed: 166,
+        cumulative_lcc_homes_closed: 483,
+      },
     ],
     limit: 5000,
     _links: {
@@ -2126,6 +2160,6 @@ export let lccdatasummary = {
       next:
         "/api/3/action/datastore_search?offset=5000&limit=5000&resource_id=74f9ac9f-7ca8-4860-b2c3-189a2c25e30c",
     },
-    total: 65,
+    total: 66,
   },
 };

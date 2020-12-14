@@ -1,7 +1,7 @@
-import { schooldata } from "./schooldata.js";
-import { schooldatasummary } from "./schooldatasummary.js";
+import { schooldata } from "./datafiles/schooldata.js";
+import { schooldatasummary } from "./datafiles/schooldatasummary.js";
 // import { lccdata } from "./lccdata";
-import { lccdatasummary } from "./lccdatasummary.js";
+import { lccdatasummary } from "./datafiles/lccdatasummary.js";
 
 const spantotalschoolcases = document.getElementById("spantotalschoolcases");
 const spantotalschoolpercentage = document.getElementById(

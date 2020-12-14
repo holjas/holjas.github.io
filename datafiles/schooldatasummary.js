@@ -1,3 +1,4 @@
+// https://data.ontario.ca/api/3/action/datastore_search?resource_id=7fbdbb48-d074-45d9-93cb-f7de58950418&limit=5000
 export let schooldatasummary = {
   help: "https://data.ontario.ca/api/3/action/help_show?name=datastore_search",
   success: true,
@@ -1590,6 +1591,30 @@ export let schooldatasummary = {
         cumulative_school_related_staff_cases: 915,
         cumulative_school_related_unspecified_cases: 1090,
       },
+      {
+        _id: 66,
+        collected_date: "2020-12-11T00:00:00",
+        reported_date: "2020-12-14T00:00:00",
+        current_schools_w_cases: 889,
+        current_schools_closed: 18,
+        current_total_number_schools: 4828,
+        new_total_school_related_cases: 137,
+        new_school_related_student_cases: 114,
+        new_school_related_staff_cases: 23,
+        new_school_related_unspecified_cases: 0,
+        recent_total_school_related_cases: 1733,
+        recent_school_related_student_cases: 1430,
+        recent_school_related_staff_cases: 300,
+        recent_school_related_unspecified_cases: 3,
+        past_total_school_related_cases: 4623,
+        past_school_related_student_cases: 2900,
+        past_school_related_staff_cases: 635,
+        past_school_related_unspecified_cases: 1088,
+        cumulative_school_related_cases: 6356,
+        cumulative_school_related_student_cases: 4330,
+        cumulative_school_related_staff_cases: 935,
+        cumulative_school_related_unspecified_cases: 1091,
+      },
     ],
     limit: 5000,
     _links: {
@@ -1598,6 +1623,6 @@ export let schooldatasummary = {
       next:
         "/api/3/action/datastore_search?offset=5000&limit=5000&resource_id=7fbdbb48-d074-45d9-93cb-f7de58950418",
     },
-    total: 65,
+    total: 66,
   },
 };
