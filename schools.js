@@ -234,14 +234,14 @@ function countSchoolBoard(array) {
     .sort((a, b) => b.num - a.num)
     .map((item) => item.num);
 }
-console.log(schoolBoardctxLabels);
-console.log(schoolBoardctxData);
+// console.log(schoolBoardctxLabels);
+// console.log(schoolBoardctxData);
 
 function casesBySchoolBoard(ctxLabels, ctxData) {
   const schoolBoardctx = document
-    .getElementById("schoolBoardCases")
+    .getElementById("schoolBoardChart")
     .getContext("2d");
-  const schooBoardChart = new Chart(schoolBoardctx, {
+  const schoolBoardChart = new Chart(schoolBoardctx, {
     type: "horizontalBar",
     data: {
       labels: ctxLabels.slice(0, [ctxLabels.length - 20]),
