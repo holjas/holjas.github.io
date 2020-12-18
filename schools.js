@@ -234,8 +234,6 @@ function countSchoolBoard(array) {
     .sort((a, b) => b.num - a.num)
     .map((item) => item.num);
 }
-// console.log(schoolBoardctxLabels);
-// console.log(schoolBoardctxData);
 
 function casesBySchoolBoard(ctxLabels, ctxData) {
   const schoolBoardctx = document
@@ -244,16 +242,27 @@ function casesBySchoolBoard(ctxLabels, ctxData) {
   const schoolBoardChart = new Chart(schoolBoardctx, {
     type: "horizontalBar",
     data: {
-      labels: ctxLabels.slice(0, [ctxLabels.length - 20]),
+      labels: ctxLabels.slice(0, [ctxLabels.length - 30]),
       datasets: [
         {
-          label: "Cases by School Board",
+          label: "Cases by School Board (>40 cases not shown)",
           backgroundColor: "rgb(255, 99, 132)",
           borderColor: "rgb(255, 99, 132)",
-          data: ctxData.slice(0, [ctxLabels.length - 20]),
+          data: ctxData.slice(0, [ctxLabels.length - 30]),
         },
       ],
     },
-    options: {},
+    options: {
+      scales: {
+        yAxes: [
+          {
+            ticks: {
+              fontSize: 8,
+              padding: 0,
+            },
+          },
+        ],
+      },
+    },
   });
 }
