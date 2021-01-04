@@ -10,7 +10,7 @@ const spantotalschoolpercentage = document.getElementById(
 let schoolBoardctxLabels = [];
 let schoolBoardctxData = [];
 //these are the functions that pull out the data. Then are assigned to the chart functions.
-let labelsData = collectedDates(schooldatasummary);
+let labelsData = collectedDates(lccdatasummary);
 let currentSchoolLocationsWithCasesData = currentSchoolLocationsWithCases(
   schooldatasummary
 );
