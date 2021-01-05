@@ -7,8 +7,11 @@ const spantotalschoolcases = document.getElementById("spantotalschoolcases");
 const spantotalschoolpercentage = document.getElementById(
   "spantotalschoolpercentage"
 );
+const spanschoolsclosed = document.getElementById("spanschoolsclosed");
+
 let schoolBoardctxLabels = [];
 let schoolBoardctxData = [];
+
 //these are the functions that pull out the data. Then are assigned to the chart functions.
 let labelsData = collectedDates(lccdatasummary);
 let currentSchoolLocationsWithCasesData = currentSchoolLocationsWithCases(
@@ -33,6 +36,7 @@ numberOfNewCasesChart(
   newLCCRelatedCasesData
 );
 casesBySchoolBoard(schoolBoardctxLabels, schoolBoardctxData);
+schoolClosures(schooldatasummary);
 // dates
 function collectedDates(array) {
   let arrayLength = array.result.records.length;
@@ -55,6 +59,18 @@ function currentSchoolLocationsWithCases(array) {
     ((results[results.length - 1] / 4828) * 100).toFixed(2) + "%";
   return results;
 }
+
+//current # of schools closed
+function schoolClosures(array) {
+  let arrayLength = array.result.records.length;
+  let results = [];
+  for (let i = 0; i < arrayLength; i++) {
+    results.push(array.result.records[i].current_schools_closed);
+  }
+  spanschoolsclosed.textContent = array[arrayLength - 1];
+  // return results;
+}
+
 // current # of LCC locations
 function currentLCCLocationsWithCases(array) {
   let arrayLength = array.result.records.length;

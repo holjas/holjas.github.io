@@ -54,7 +54,7 @@
             >
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Long Term Care Homes</a>
+            <a class="nav-link" href="#longtermhomes">Long Term Care Homes</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Correctional Instituions</a>
@@ -63,7 +63,7 @@
       </div>
     </nav>
 
-    <div class="container-fluid">
+    <div class="container-fluid justify-content-center">
       
       <!-- Ontario Schools and Child Care Centres CHART START -->
       <div class="row my-3" id="schools">
@@ -72,14 +72,15 @@
           <p>
             There are <span class='font-weight-bolder text-monospace'>4828</span> schools in Ontario.<br/>Currently
             <span id="spantotalschoolcases" class='font-weight-bolder text-monospace'>-</span> schools have one or more active cases or
-            <span id="spantotalschoolpercentage" class='font-weight-bolder text-monospace'>-%</span> of schools.
+            <span id="spantotalschoolpercentage" class='font-weight-bolder text-monospace'>-%</span> of schools.<br/>
+            There are <span id="spanschoolsclosed" class='font-weight-bolder text-monospace'>-</span> schools closed.
           </p>
         </div>
       </div>
 
         <div class="row my-3">
         <div class="col-md-6 py-1">
-          <div class="card">
+          <div class="card ">
             <div class="card-body">
               <!-- current locations chart -->
               <canvas id="schoolsTotalChart"></canvas>
@@ -97,7 +98,7 @@
           </div>
           </div>
         </div>
-   <!-- School Boards -->
+      <!-- School Boards -->
         <div class="row my-3">
           <div class="col py-1">
             <div class="card">
@@ -111,10 +112,10 @@
         </div>
         <!--  -->
 
-      <div class="row my-3" >
+      <!-- <div class="row my-3" >
         <div class="col text-center top-box">
           
-          <!-- MAP START -->
+          MAP START -->
           <!-- <iframe
           src="https://www.google.com/maps/d/embed?mid=1cX7khYBzEUTvnRZrKDFqRcCjleuR84RS"
           width="640"
@@ -125,12 +126,35 @@
           <!-- <p>
             Showing recent cases on map. Those that were reported in the past
             two weeks of current date
-          </p> -->
+          </p>
         </div>
-      </div>
+      </div> -->
       <!-- Ontario Schools and Child Care Centres MAP END-->
       </div>
     </div>
+
+    <!--long term care homes section Start-->
+    <div class="container-fluid">
+    <div class="row my-3" id="longtermhomes">
+      <div class="col text-center top-box">
+        <h5 class="display-5">Long Term Care Homes</h5>
+      </div>
+    </div>
+
+    
+    <div class="row my-3">
+      <div class="col py-1 center">
+        <div class="card" style="width:80%">
+          <div class="card-body">
+            <!-- current number of active cases chart -->
+            <canvas id="longTermTotalChart"></canvas>
+          
+          </div>
+        </div>
+      </div>
+     
+      </div>
+  </div>
     <!-- bootstrap -->
     <script
       src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
@@ -153,7 +177,9 @@
     <!-- <script src="dataapi.js"></script> -->
 
     <!-- long term care home -->
-    <!-- <script src="longtermcarehomes.js"></script> -->
+    <script type="module" src="longtermcarehomes.js"></script>
+    <script type="module" src="./datafiles/longtermcare.js"></script>
+
     <!-- correctional institutions -->
     <!-- <script src="correctionalinstitutions.js"></script> -->
   </body>
