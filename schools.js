@@ -67,8 +67,7 @@ function schoolClosures(array) {
   for (let i = 0; i < arrayLength; i++) {
     results.push(array.result.records[i].current_schools_closed);
   }
-  spanschoolsclosed.textContent = array[arrayLength - 1];
-  // return results;
+  spanschoolsclosed.textContent = results[arrayLength - 1];
 }
 
 // current # of LCC locations
