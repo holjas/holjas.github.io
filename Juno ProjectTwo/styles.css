@@ -1,0 +1,142 @@
+:root {
+  --headline: "Notable", sans-serif;
+  --maintext: "Ubuntu", sans-serif;
+  --bs-light: #fffff1;
+  --bs-dark: #212529;
+  --black: #000000;
+  --teal: #47a2b7;
+  --darkteal: #193f47;
+  --lightpink: #facbcd;
+  --darkpink: #f57276;
+  --lightyellow: #ffffe4;
+  --lime: #a0ffc0;
+}
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+body {
+  background-image: url("./assets/background-image.jpg");
+  /* background-image: url("https://wallpaperaccess.com/full/2448937.jpg"); */
+  background-repeat: repeat;
+  font-family: var(--maintext);
+}
+a:link,
+a:hover,
+a:active,
+a:visited {
+  text-decoration: none;
+}
+.btn {
+  background-color: var(--teal);
+  margin: 10px;
+  padding: 20px;
+  border: 3px solid var(--black);
+}
+.btn:hover {
+  color: var(--bs-light);
+  font-weight: 900;
+  background-color: var(--darkteal);
+}
+
+/* Left Side Elements */
+.headline {
+  font-size: 3.3em;
+  font-family: var(--headline);
+  -webkit-text-stroke: 1px var(--black);
+  color: white;
+  text-shadow: 3px 6px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000,
+    -1px 3px 0 #000, 1px 3px 0 #000;
+}
+.left-side {
+  height: 70vh;
+  background-color: var(--lightpink);
+  border: 4px solid var(--black);
+  border-radius: 5px 40px 5px;
+  box-shadow: 5px 5px var(--black);
+}
+select {
+  color: var(--bs-dark);
+  border-radius: 5px 20px 5px;
+  padding: 5px 10px;
+  background-color: var(--teal);
+  cursor: pointer;
+}
+
+/* Right Side Elements */
+.right-side {
+  height: 80vh;
+  background-color: var(--lightyellow);
+  border: 4px solid var(--black);
+  border-radius: 5px 40px 5px;
+}
+.quiz-question {
+  font-size: 1.5em;
+}
+#next-btn {
+  display: none;
+}
+
+/* Final Overlay */
+.final-overlay-container {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+.final-overlay {
+  position: fixed;
+  top: 5%;
+  left: 15%;
+  height: 75vh;
+  width: 70vw;
+  background-color: var(--bs-light);
+  border: 8px solid var(--black);
+  border-radius: 5px 40px 5px;
+  box-shadow: 9px 9px var(--black);
+}
+.final-overlay-text {
+  margin: auto 0;
+  text-align: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.question-final-results {
+  display: block;
+  margin: 30px;
+  font-size: 3em;
+}
+.close-btn {
+  float: right;
+  font-size: 3em;
+  background: transparent;
+  border-color: transparent;
+  color: var(--black);
+}
+.close-btn:hover {
+  color: var(--darkpink);
+}
+
+/* Footer styling */
+.footer {
+  bottom: 0;
+  background-color: var(--lime);
+  border-top: 5px solid var(--black);
+  z-index: 10;
+}
+.juno-college-img {
+  width: 50px;
+  border-left: 5px solid var(--black);
+}
+.footer-text a {
+  color: var(--bs-dark);
+  font-size: 12px;
+  font-style: italic;
+  font-weight: 900;
+}
